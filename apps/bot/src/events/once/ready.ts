@@ -1,4 +1,4 @@
-import { Client, Events } from "discord.js"
+import { ActivityType, Client, Events } from "discord.js"
 import { log } from "../../lib/utils/console"
 import { TypedClient } from "../../lib/types/client"
 import { EventHandler } from "../../lib/types/event"
@@ -22,6 +22,16 @@ const ReadyEventHandler: EventHandler = {
     connectDb()
 
     log({}, "Checking new social uploads every 2 minutes")
+
+    readyClient.user.setPresence({
+			activities: [
+				{
+					name: `/help | ${readyClient.guilds.cache.size} servers`,
+					type: ActivityType.Listening,
+				}
+			],
+			status: "online"
+		})
 
     async function workers() {
       await youtubeWorker(typedClient)
