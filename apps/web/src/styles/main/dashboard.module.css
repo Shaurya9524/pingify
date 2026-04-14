@@ -1,0 +1,72 @@
+.dashboard {
+  padding: 2rem 3%;
+}
+
+.guilds {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.back {
+  display: flex;
+  align-items: center;
+  opacity: 0.75;
+  transition: opacity 0.15s ease-in-out;
+  cursor: pointer;
+  width: max-content;
+}
+
+.back:hover {
+  opacity: 1;
+}
+
+.tooltip {
+  position: fixed;
+  background: rgba(0, 0, 0, 0.8);
+  color: #ffffff;
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: 0.85rem;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translateY(-100%);
+  white-space: nowrap;
+}
+
+.integrations {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.integration {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  align-items: center;
+  cursor: pointer;
+  border: 1px solid var(--color-secondary);
+  background-color: var(--color-dark-glass);
+  border-radius: 10px;
+  padding: 1rem;
+  width: 100px;
+  transition: 0.1s background-color ease-in-out, 0.15s transform ease-in-out;
+}
+
+.integration:hover {
+  transform: translateY(-5px);
+  background-color: var(--color-secondary-alt);
+}
+
+.submitBtn {
+  padding: 8px 16px;
+  background-color: var(--color-dark-blurple);
+  color: var(--color-pale);
+  border: none;
+  cursor: pointer;
+  font: inherit;
+  font-weight: 600;
+  border-radius: 8px;
+}

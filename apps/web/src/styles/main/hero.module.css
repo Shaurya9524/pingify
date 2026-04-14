@@ -1,0 +1,76 @@
+.hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  padding: 2rem 3%;
+  text-align: center;
+  min-height: 90vh;
+}
+
+.tagline {
+  font-size: 3rem;
+  font-weight: 800;
+  position: relative;
+}
+
+.subText {
+  font-size: 1.025rem;
+  max-width: 750px;
+  font-weight: 500;
+}
+
+.botInfo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border: 1px solid var(--color-secondary);
+  border-radius: 999px;
+  padding: 0.3rem 1rem;
+  background-color: var(--color-secondary-alt);
+  font-size: 0.9rem;
+  min-height: 30px;
+  min-width: 10px;
+  max-width: 400px;
+  overflow: hidden;
+  transition: max-width 2s ease-in-out;
+}
+
+.ctaBtns {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+@media (max-width: 400px) {
+  .ctaBtns {
+    flex-direction: column;
+  }
+}
+
+.ctaBtn {
+  cursor: pointer;
+  padding: 0.75rem 1.2rem;
+  border-radius: 10px;
+  font-weight: 600;
+  transition: 0.15s background-color ease-in-out;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.primaryBtn {
+  background-color: var(--color-highlight);
+  color: var(--color-primary);
+}
+
+.secondaryBtn {
+  background-color: var(--color-blurple);
+  color: var(--color-pale);
+}
+
+.secondaryBtn:hover {
+  background-color: var(--color-dark-blurple);
+}

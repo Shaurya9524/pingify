@@ -1,0 +1,22 @@
+.themeToggle {
+  cursor: pointer;
+  border: 1px solid var(--color-secondary);
+  padding: 6px;
+  width: fit-content;
+  border-radius: 10px;
+  display: grid;
+  place-items: center;
+  transition: 0.2s background-color ease-in-out;
+}
+
+.themeToggle:hover {
+  background-color: var(--color-dark-glass);
+}
+
+.themeToggle:hover .darkModeIcon {
+  color: var(--color-night-blue);
+}
+
+.themeToggle:hover .lightModeIcon {
+  color: var(--color-day-yellow);
+}

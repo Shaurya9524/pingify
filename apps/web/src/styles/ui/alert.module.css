@@ -1,0 +1,29 @@
+.alert {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 6px 10px;
+  border-radius: 8px;
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  background-color: var(--color-secondary);
+  font-weight: 600;
+  opacity: 0;
+  transform: translate(-50%, -8px);
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.alert.visible {
+  opacity: 1;
+  transform: translate(-50%, 0);
+}
+
+.alert.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.closeBtn {
+  cursor: pointer;
+}

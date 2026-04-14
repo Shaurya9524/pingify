@@ -1,0 +1,40 @@
+.guildCard {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  border: 1px solid var(--color-secondary);
+  background-color: var(--color-dark-glass);
+  width: fit-content;
+  padding: 0.7rem;
+  border-radius: 10px;
+  cursor: pointer;
+  width: 160px;
+  height: 190px;
+  transition: 0.1s background-color ease-in-out, 0.15s transform ease-in-out;
+}
+
+.skeleton {
+  cursor: default;
+}
+
+.guildCard:not(.skeleton):hover {
+  transform: translateY(-5px);
+  background-color: var(--color-secondary-alt);
+}
+
+.guildIcon {
+  border-radius: 10px;
+  align-self: center;
+  width: 130px;
+  height: 130px;
+  display: grid;
+  place-items: center;
+}
+
+.guildName {
+  font-size: 1.15rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-align: center;
+}

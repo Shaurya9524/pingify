@@ -1,0 +1,35 @@
+.input {
+  border-radius: 8px;
+  background: var(--color-dark-glass);
+  border: 2px solid var(--color-secondary);
+  outline: none;
+  padding: 6px 10px;
+  font: inherit;
+  color: inherit;
+  transition: 0.15s box-shadow ease-in-out;
+}
+
+.input:focus {
+  box-shadow: 0 0 6px 2px var(--color-border-glow);
+}
+
+.textarea {
+  resize: vertical;
+}
+
+.textarea::-webkit-scrollbar {
+  width: 4px;
+}
+
+.textarea::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.textarea::-webkit-scrollbar-thumb {
+  background: var(--color-secondary);
+  border-radius: 5px;
+}
+
+.textarea::-webkit-resizer {
+  background-color: var(--color-secondary-alt);
+}

@@ -1,0 +1,320 @@
+.subscriptionCard {
+  --card-bg: #161b22;
+  --card-text: #ffffff;
+  --card-border: rgba(255, 255, 255, 0.07);
+  --card-divider: rgba(255, 255, 255, 0.1);
+  --card-social-name: #f0f0f0;
+  --card-integration-sub: rgba(255, 255, 255, 0.4);
+  --card-meta-label: rgba(255, 255, 255, 0.35);
+  --card-meta-value: rgba(255, 255, 255, 0.88);
+  --card-tooltip-bg: var(--color-primary);
+  --card-tooltip-border: var(--color-border-glow);
+  --card-tooltip-color: rgba(255, 255, 255, 0.85);
+  --card-divider: rgba(255, 255, 255, 0.1);
+
+  --card-calendar-bg: rgba(110, 86, 207, 0.22);
+  --card-calendar-color: #c084fc;
+  --card-calendar-border: rgba(139, 92, 246, 0.35);
+
+  --card-hashtag-bg: rgba(6, 95, 70, 0.4);
+  --card-hashtag-color: #34d399;
+  --card-hashtag-border: rgba(16, 185, 129, 0.35);
+
+  --card-bell-bg: rgba(14, 116, 144, 0.22);
+  --card-bell-color: #22d3ee;
+  --card-bell-border: rgba(6, 182, 212, 0.35);
+
+  --card-edit-bg: rgba(110, 86, 207, 0.22);
+  --card-edit-color: #a78bfa;
+  --card-edit-border: rgba(110, 86, 207, 0.35);
+
+  --card-pause-bg: rgba(202, 138, 4, 0.18);
+  --card-pause-color: #fbbf24;
+  --card-pause-border: rgba(202, 138, 4, 0.3);
+
+  --card-delete-bg: rgba(220, 38, 38, 0.15);
+  --card-delete-color: #f87171;
+  --card-delete-border: rgba(220, 38, 38, 0.3);
+
+  --card-resume-bg: rgba(22, 163, 74, 0.18);
+  --card-resume-color: #4ade80;
+  --card-resume-border: rgba(22, 163, 74, 0.3);
+}
+
+[data-theme="light"] .subscriptionCard {
+  --card-bg: #cce8eb;
+  --card-text: #1a1a1a;
+  --card-border: rgba(33, 33, 33, 0.1);
+  --card-divider: rgba(33, 33, 33, 0.12);
+  --card-social-name: #1a1a1a;
+  --card-integration-sub: rgba(33, 33, 33, 0.5);
+  --card-meta-label: rgba(33, 33, 33, 0.45);
+  --card-meta-value: rgba(33, 33, 33, 0.9);
+  --card-tooltip-bg: var(--color-primary);
+  --card-tooltip-border: rgba(33, 33, 33, 0.1);
+  --card-tooltip-color: rgba(33, 33, 33, 0.85);
+  --card-divider: rgba(33, 33, 33, 0.12);
+
+  --card-calendar-bg: rgba(110, 86, 207, 0.12);
+  --card-calendar-color: #7c3aed;
+  --card-calendar-border: rgba(110, 86, 207, 0.25);
+
+  --card-hashtag-bg: rgba(6, 95, 70, 0.12);
+  --card-hashtag-color: #047857;
+  --card-hashtag-border: rgba(16, 185, 129, 0.25);
+
+  --card-bell-bg: rgba(14, 116, 144, 0.12);
+  --card-bell-color: #0e7490;
+  --card-bell-border: rgba(6, 182, 212, 0.25);
+
+  --card-edit-bg: rgba(110, 86, 207, 0.12);
+  --card-edit-color: #6d28d9;
+  --card-edit-border: rgba(110, 86, 207, 0.25);
+
+  --card-pause-bg: rgba(202, 138, 4, 0.12);
+  --card-pause-color: #b45309;
+  --card-pause-border: rgba(202, 138, 4, 0.25);
+
+  --card-delete-bg: rgba(220, 38, 38, 0.1);
+  --card-delete-color: #b91c1c;
+  --card-delete-border: rgba(220, 38, 38, 0.25);
+
+  --card-resume-bg: rgba(22, 163, 74, 0.12);
+  --card-resume-color: #15803d;
+  --card-resume-border: rgba(22, 163, 74, 0.3);
+}
+
+.subscriptionCard {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  width: 320px;
+  border-radius: 14px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.ellipsisContainer {
+  min-width: 0;
+}
+
+.ellipsisContent {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  padding: 1rem 1.1rem 0.75rem;
+  position: relative;
+}
+
+.pulseWrap {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+}
+
+.pulseBadge {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--color-red);
+  cursor: pointer;
+  position: relative;
+}
+
+.pulseBadge::before {
+  content: '';
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: rgba(226, 75, 74, 0.5);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+.tooltip {
+  display: none;
+  position: absolute;
+  top: 0;
+  right: 18px;
+  background: var(--card-tooltip-bg);
+  border: 1px solid var(--card-tooltip-border);
+  color: var(--card-tooltip-color);
+  border-radius: 8px;
+  padding: 8px 12px;
+  font-size: 12px;
+  white-space: normal;
+  word-break: break-word;
+  width: 220px;
+  line-height: 1.4;
+  pointer-events: none;
+  z-index: 10;
+}
+
+.pulseWrap:hover .tooltip {
+  display: block;
+}
+
+@keyframes pulse {
+
+  0%,
+  100% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 0.8;
+  }
+
+  50% {
+    transform: translate(-50%, -50%) scale(2.5);
+    opacity: 0;
+  }
+}
+
+.integrationWatermark {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80%;
+  height: 80%;
+  aspect-ratio: 1/1;
+  z-index: 1;
+  opacity: 0.04;
+  pointer-events: none;
+}
+
+.socialName {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--card-social-name);
+}
+
+.integrationSub {
+  font-size: 0.75rem;
+  color: var(--card-integration-sub);
+  margin-top: 2px;
+}
+
+.metaList {
+  display: flex;
+  flex-direction: column;
+  padding: 0.25rem 1.1rem;
+}
+
+.metaRow {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.5rem 0;
+  min-width: 0;
+}
+
+.metaIcon {
+  border-radius: 8px;
+  display: grid;
+  place-items: center;
+  padding: 0.4rem;
+  min-width: 30;
+}
+
+.calendarIcon {
+  background: var(--card-calendar-bg);
+  color: var(--card-calendar-color);
+  border: 1px solid var(--card-calendar-border);
+}
+
+.hashtagIcon {
+  background: var(--card-hashtag-bg);
+  color: var(--card-hashtag-color);
+  border: 1px solid var(--card-hashtag-border);
+}
+
+.bellIcon {
+  background: var(--card-bell-bg);
+  color: var(--card-bell-color);
+  border: 1px solid var(--card-bell-border);
+}
+
+.metaLabel {
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  color: var(--card-meta-label);
+  text-transform: uppercase;
+  margin-bottom: 2px;
+}
+
+.metaValue {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--card-meta-value);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+}
+
+.divider {
+  border-top: 2px solid var(--card-divider);
+  border-radius: 1px;
+  margin: 0.75rem 0.9rem 0;
+}
+
+.actions {
+  display: flex;
+  gap: 8px;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  padding: 0.9rem;
+}
+
+.actionBtn {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 0.45rem 0.85rem;
+  border-radius: 9px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  transition: opacity 0.15s ease, transform 0.15s ease;
+}
+
+.actionBtn:hover {
+  opacity: 0.8;
+  transform: translateY(-1px);
+}
+
+.editBtn {
+  background: var(--card-edit-bg);
+  color: var(--card-edit-color);
+  border: 1px solid var(--card-edit-border);
+}
+
+.pauseBtn {
+  background: var(--card-pause-bg);
+  color: var(--card-pause-color);
+  border: 1px solid var(--card-pause-border);
+}
+
+.deleteBtn {
+  background: var(--card-delete-bg);
+  color: var(--card-delete-color);
+  border: 1px solid var(--card-delete-border);
+}
+
+.resumeBtn {
+  background: var(--card-resume-bg);
+  color: var(--card-resume-color);
+  border: 1px solid var(--card-resume-border);
+}

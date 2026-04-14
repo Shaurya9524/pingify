@@ -1,0 +1,17 @@
+.loginBtn {
+  cursor: pointer;
+  background-color: var(--color-night-blue);
+  color: var(--color-pale);
+  padding: 0.5rem 1.2rem;
+  border-radius: 10px;
+  font-weight: 600;
+  transition: 0.2s all ease-in-out;
+  width: fit-content;
+}
+
+.loginBtn:hover {
+  --hover-text-color: #ffffff;
+  --hover-bg-color: #1e5b94;
+  color: var(--hover-text-color);
+  background-color: var(--hover-bg-color);
+}

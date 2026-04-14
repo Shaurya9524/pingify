@@ -1,0 +1,65 @@
+.profile {
+  display: grid;
+  place-items: center;
+  position: relative;
+}
+
+.menu {
+  position: absolute;
+  right: 0;
+  top: 110%;
+  font-size: 0.95rem;
+  background-color: var(--color-dark-glass);
+  border: 1px solid var(--color-secondary);
+  border-radius: 7px;
+  display: flex;
+  flex-direction: column;
+  min-width: 130px;
+  max-width: 220px;
+  z-index: 10;
+  backdrop-filter: blur(5px);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  overflow: hidden;
+}
+
+.menu.open {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  pointer-events: auto;
+}
+
+.menu.closed {
+  transform: translateY(-6px) scale(0.98);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.item {
+  padding: 0.3rem 0.75rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  transition: 0.1s background-color ease-in-out;
+  cursor: pointer;
+}
+
+.item:not(.disabledItem):hover {
+  background-color: var(--color-secondary);
+}
+
+.disabledItem {
+  cursor: default;
+}
+
+.separator {
+  border: 1px solid var(--color-secondary);
+}
+
+.skeleton {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: var(--color-secondary);
+}
