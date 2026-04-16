@@ -21,6 +21,7 @@ const pulsingLine = (
 
 export function SubscriptionCard({ subscription, onDeleted }: { subscription: SubscriptionDocument, onDeleted: (id: string) => void }) {
   const { setAlert } = useAlertContext()
+  const [subscriptionError, setSubscriptionError] = useState("")
   const [notificationChannelName, setNotificationChannelName] = useState("")
   const { integration, notificationChannelId, socialId, uploadMessage, status, createdAt, _id } = subscription
   const docId = _id as unknown as string
@@ -35,9 +36,16 @@ export function SubscriptionCard({ subscription, onDeleted }: { subscription: Su
 
   useEffect(() => {
     async function getNotificationChannel() {
-      const { channel } = await getChannel(notificationChannelId)
+      const { channel, error } = await getChannel(notificationChannelId)
+
       if (channel) {
         setNotificationChannelName(channel.name)
+      }
+
+      if (error === "Not Found") {
+        setSubscriptionError("The channel associated with this subscription was not found. It may have been deleted or the bot may have lost access to it.")
+      } else if (error) {
+        setSubscriptionError("An error occurred while fetching the notification channel. Please try again later.")
       }
     }
 
@@ -75,9 +83,9 @@ export function SubscriptionCard({ subscription, onDeleted }: { subscription: Su
 
       <div className={styles.header}>
         <div className={styles.pulseWrap}>
-          <div className={styles.pulseBadge} />
+          <div className={styles.pulseBadge} data-error={!!subscriptionError} />
           <div className={styles.tooltip}>
-            {uploadMessage}
+            {subscriptionError || uploadMessage}
           </div>
         </div>
         <Image src={IntegrationIcon} alt={integration[0]} width={50} height={50} priority />

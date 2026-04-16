@@ -22,7 +22,10 @@ export async function POST(req: Request) {
     })
 
     if (!res.ok) {
-      const response: GetChannelRes = { channel: null, error: "An error occured while fetching the channel" }
+      const response: GetChannelRes = {
+        channel: null,
+        error: res.statusText === "Not Found" ? "Not Found" : "An error occured while fetching the channel"
+      }
       return Response.json(response, { status: 500 })
     }
 
