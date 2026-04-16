@@ -64,7 +64,6 @@ function Integrations({ guildId }: { guildId: string }) {
     <br />
     <div className={styles.integrations}>{(
       Object.keys(integrationIcons) as Integration[]).map((integration, i) => {
-        if (integration === "Odysee") return
         return <Link href={`/dashboard/${guildId}/${integration}`} className={styles.integration} key={i}>
           <IntegrationIcon integration={integration} size={45} />
           {integration}
