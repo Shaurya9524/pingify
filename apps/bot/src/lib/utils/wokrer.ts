@@ -8,7 +8,7 @@ import Subscription from "../../database/models/subscription"
 import { SubscriptionDocument } from "../../database/types/subscription"
 
 export async function worker(client: TypedClient, integration: Integration, fetchPost: (socialId: string) => Promise<PostData | null>) {
-  const subscriptions = await Subscription.find<SubscriptionDocument>({ integration })
+  const subscriptions: SubscriptionDocument[] = await Subscription.find({ integration, status: "Active" })
   const latestPosts = new Map<string, PostData>()
 
   for (const subscription of subscriptions) {
